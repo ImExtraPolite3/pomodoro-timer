@@ -1,3 +1,50 @@
-h1 {
-  color: red;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #131516;
+  color: #d8d4cf;
+}
+
+#container,
+#timer-buttons,
+#start-button {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#container {
+  width: 90%;
+  margin: 40% auto;
+  text-align: center;
+  background: rgb(96, 104, 108);
+}
+
+#timer {
+  font-size: 3rem;
+  margin: 10px 0;
+}
+
+#timer-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#start-button {
+  padding: 5px 50px;
+  margin-bottom: 10px;
+}
+
+button {
+  background: rgb(69, 73, 75);
+  border: none;
+  color: #d8d4cf;
+  font-size: 1.05rem;
+  padding: 5px 0;
+}
+
+button:hover {
+  background: rgb(90, 92, 94);
 }
