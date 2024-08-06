@@ -1,38 +1,40 @@
-let minutes = 24;
+let minutes = 0;
 let seconds = 59;
 
 function minutesTimer() {
   const minutes_dom = document.getElementById('minutes');
 
-  minutes_dom.textContent = minutes--;
+  if (minutes > -1) {
+    minutes_dom.textContent = minutes--;
+  }
 }
 
 function secondTimer() {
   const seconds_dom = document.getElementById('seconds');
-  const minutes_dom = document.getElementById('minutes');
 
-  if (minutes > -2) {
-    if (seconds == 59) {
-      minutesTimer();
-    }
-
+  if (seconds > -1) {
     seconds_dom.textContent = seconds--;
-
-    if (seconds < 0) {
-      seconds = 59;
-    }
-  } else if (minutes === -1) {
-    minutes_dom.textContent = '25';
-    seconds_dom.textContent = '00';
   }
+
+  if (minutes > -1 && seconds == -1) {
+    seconds = 59;
+  }
+}
+
+function check() {
+  if (seconds == 59) {
+    minutesTimer();
+  }
+
+  secondTimer();
 }
 
 function startPorodoro() {
   const start_button = document.getElementById('start-button');
 
   start_button.addEventListener('click', () => {
-    setInterval(secondTimer, 1000);
+    setInterval(check, 1000);
   });
 }
 
-export { minutesTimer, secondTimer, startPorodoro };
+export { startPorodoro };
