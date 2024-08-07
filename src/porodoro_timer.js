@@ -1,4 +1,4 @@
-let minutes = 0;
+let minutes = 24;
 let seconds = 59;
 
 function minutesTimer() {
