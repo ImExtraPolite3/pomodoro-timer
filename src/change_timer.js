@@ -1,3 +1,7 @@
+import { startLongBreak } from './long_break_timer';
+import { startPorodoro } from './porodoro_timer';
+import { startShortBreak } from './short_break_timer';
+
 function changeToPomodoro() {
   const minutes = document.getElementById('minutes');
   const seconds = document.getElementById('seconds');
@@ -29,14 +33,20 @@ function change() {
 
   pomodoro_tab.addEventListener('click', () => {
     changeToPomodoro();
+    startPorodoro();
+    clearInterval(14);
   });
 
   short_break_tab.addEventListener('click', () => {
     changeToShortBreak();
+    startShortBreak();
+    clearInterval(14);
   });
 
   long_break_tab.addEventListener('click', () => {
     changeToLongBreak();
+    startLongBreak();
+    clearInterval(14);
   });
 }
 

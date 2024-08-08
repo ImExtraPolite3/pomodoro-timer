@@ -1,4 +1,4 @@
-let minutes = 4;
+let minutes = 9;
 let seconds = 59;
 
 function minutesTimer() {
@@ -29,7 +29,7 @@ function check() {
   secondTimer();
 }
 
-function startShortBreak() {
+function startLongBreak() {
   const start_button = document.getElementById('start-button');
 
   start_button.addEventListener('click', () => {
@@ -37,4 +37,4 @@ function startShortBreak() {
   });
 }
 
-export { startShortBreak };
+export { startLongBreak };
