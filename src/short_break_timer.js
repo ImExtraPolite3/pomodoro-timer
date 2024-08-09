@@ -21,7 +21,7 @@ function secondTimer() {
   }
 }
 
-function check() {
+function callShortBreak() {
   if (seconds == 59) {
     minutesTimer();
   }
@@ -29,12 +29,4 @@ function check() {
   secondTimer();
 }
 
-function startShortBreak() {
-  const start_button = document.getElementById('start-button');
-
-  start_button.addEventListener('click', () => {
-    console.log(setInterval(check, 1000));
-  });
-}
-
-export { startShortBreak };
+export { callShortBreak };

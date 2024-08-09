@@ -21,7 +21,7 @@ function secondTimer() {
   }
 }
 
-function check() {
+function callPomodoro() {
   if (seconds == 59) {
     minutesTimer();
   }
@@ -29,12 +29,4 @@ function check() {
   secondTimer();
 }
 
-function startPorodoro() {
-  const start_button = document.getElementById('start-button');
-
-  start_button.addEventListener('click', () => {
-    setInterval(check, 1000);
-  });
-}
-
-export { startPorodoro };
+export { callPomodoro };
