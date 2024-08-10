@@ -39,6 +39,10 @@ html {
   margin-bottom: 10px;
 }
 
+.active-button {
+  background: rgb(90, 92, 94);
+}
+
 button {
   background: rgb(69, 73, 75);
   border: none;

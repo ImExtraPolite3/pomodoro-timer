@@ -1,4 +1,4 @@
-import { startButton } from './start_timers';
+import { startButton } from './site_dom';
 import './style.css';
 
 startButton();
