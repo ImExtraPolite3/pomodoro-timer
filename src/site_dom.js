@@ -12,4 +12,18 @@ function startButton() {
   });
 }
 
-export { startButton };
+function changeActiveTab() {
+  const button = document.querySelectorAll('#timer-buttons > button');
+
+  button.forEach((each_button) => {
+    each_button.addEventListener('click', () => {
+      for (let i = 0; i < button.length; i++) {
+        button[i].classList.remove('active-button');
+      }
+
+      each_button.classList.add('active-button');
+    });
+  });
+}
+
+export { startButton, changeActiveTab };
