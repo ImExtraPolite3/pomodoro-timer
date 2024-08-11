@@ -2,6 +2,10 @@ import { callLongBreak } from './long_break_timer';
 import { callPomodoro } from './porodoro_timer';
 import { callShortBreak } from './short_break_timer';
 
+let stopPomodoro;
+let stopShortBreak;
+let stopLongBreak;
+
 function start() {
   const start = document.getElementById('pause-button');
 
@@ -35,6 +39,9 @@ function changeActiveTab() {
     each_button.addEventListener('click', () => {
       for (let i = 0; i < button.length; i++) {
         button[i].classList.remove('active-button');
+        clearInterval(stopPomodoro);
+        clearInterval(stopShortBreak);
+        clearInterval(stopLongBreak);
       }
 
       each_button.classList.add('active-button');
@@ -83,18 +90,18 @@ function startPomodoroTimer() {
   const start_button = document.getElementById('start-button');
 
   start_button.addEventListener('click', () => {
-    console.log(setInterval(callPomodoro, 1000));
+    stopPomodoro = setInterval(callPomodoro, 1000);
   });
 
   button.forEach((each_button) => {
     each_button.addEventListener('click', () => {
       if (each_button.id === 'short-break') {
         start_button.addEventListener('click', () => {
-          console.log(setInterval(callShortBreak, 1000));
+          stopShortBreak = setInterval(callShortBreak, 1000);
         });
       } else if (each_button.id === 'long-break') {
         start_button.addEventListener('click', () => {
-          console.log(setInterval(callLongBreak, 1000));
+          stopLongBreak = setInterval(callLongBreak, 1000);
         });
       }
     });
