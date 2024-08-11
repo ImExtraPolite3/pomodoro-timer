@@ -4,6 +4,7 @@ import {
   changeToPomodoro,
   changeToShortBreak,
   startButton,
+  startPomodoroTimer,
 } from './site_dom';
 import './style.css';
 
@@ -12,3 +13,4 @@ changeActiveTab();
 changeToPomodoro();
 changeToShortBreak();
 changeToLongBreak();
+startPomodoroTimer();
