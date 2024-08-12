@@ -2,6 +2,7 @@ import { callLongBreak } from './long_break_timer';
 import { callPomodoro } from './porodoro_timer';
 import { callShortBreak } from './short_break_timer';
 
+let isPaused = false;
 let stopPomodoro;
 let stopShortBreak;
 let stopLongBreak;
@@ -25,7 +26,9 @@ function startButton() {
 
   start_pause_button.addEventListener('click', () => {
     if (start_pause_button.textContent === 'start') {
-      pause();
+      if (!isPaused) {
+        pause();
+      }
     } else {
       start();
     }
@@ -105,6 +108,15 @@ function startPomodoroTimer() {
         });
       }
     });
+  });
+}
+
+function stopTimer() {
+  const start_button = document.getElementById('start-button');
+
+  start_button.addEventListener('click', (e) => {
+    e.preventDefault();
+    isPaused = true;
   });
 }
 
