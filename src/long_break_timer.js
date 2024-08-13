@@ -1,4 +1,3 @@
-let isPaused = false;
 let minutes = 9;
 let seconds = 59;
 

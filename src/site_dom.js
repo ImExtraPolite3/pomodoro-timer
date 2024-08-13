@@ -2,7 +2,6 @@ import { callLongBreak } from './long_break_timer';
 import { callPomodoro } from './porodoro_timer';
 import { callShortBreak } from './short_break_timer';
 
-let isPaused = false;
 let stopPomodoro;
 let stopShortBreak;
 let stopLongBreak;
@@ -10,6 +9,7 @@ let stopLongBreak;
 function start() {
   const start = document.getElementById('pause-button');
 
+  stopPomodoroTimer();
   start.textContent = 'start';
   start.setAttribute('id', 'start-button');
 }
@@ -17,6 +17,7 @@ function start() {
 function pause() {
   const pause = document.getElementById('start-button');
 
+  startPomodoroTimer();
   pause.textContent = 'pause';
   pause.setAttribute('id', 'pause-button');
 }
@@ -26,9 +27,7 @@ function startButton() {
 
   start_pause_button.addEventListener('click', () => {
     if (start_pause_button.textContent === 'start') {
-      if (!isPaused) {
-        pause();
-      }
+      pause();
     } else {
       start();
     }
@@ -89,35 +88,11 @@ function changeToLongBreak() {
 }
 
 function startPomodoroTimer() {
-  const button = document.querySelectorAll('#timer-buttons > button');
-  const start_button = document.getElementById('start-button');
-
-  start_button.addEventListener('click', () => {
-    stopPomodoro = setInterval(callPomodoro, 1000);
-  });
-
-  button.forEach((each_button) => {
-    each_button.addEventListener('click', () => {
-      if (each_button.id === 'short-break') {
-        start_button.addEventListener('click', () => {
-          stopShortBreak = setInterval(callShortBreak, 1000);
-        });
-      } else if (each_button.id === 'long-break') {
-        start_button.addEventListener('click', () => {
-          stopLongBreak = setInterval(callLongBreak, 1000);
-        });
-      }
-    });
-  });
+  stopPomodoro = setInterval(callPomodoro, 1000);
 }
 
-function stopTimer() {
-  const start_button = document.getElementById('start-button');
-
-  start_button.addEventListener('click', (e) => {
-    e.preventDefault();
-    isPaused = true;
-  });
+function stopPomodoroTimer() {
+  clearInterval(stopPomodoro);
 }
 
 export {

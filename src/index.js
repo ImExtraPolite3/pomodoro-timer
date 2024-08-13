@@ -13,4 +13,4 @@ changeActiveTab();
 changeToPomodoro();
 changeToShortBreak();
 changeToLongBreak();
-startPomodoroTimer();
+// startPomodoroTimer();

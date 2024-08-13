@@ -25,7 +25,6 @@ function callPomodoro() {
   if (seconds == 59) {
     minutesTimer();
   }
-
   secondTimer();
 }
 
