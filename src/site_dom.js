@@ -2,6 +2,7 @@ import { callLongBreak } from './long_break_timer';
 import { callPomodoro } from './porodoro_timer';
 import { callShortBreak } from './short_break_timer';
 
+let tab = 'pomodoro';
 let stopPomodoro;
 let stopShortBreak;
 let stopLongBreak;
@@ -10,6 +11,8 @@ function start() {
   const start = document.getElementById('pause-button');
 
   stopPomodoroTimer();
+  stopShortTimer();
+  stopLongTimer();
   start.textContent = 'start';
   start.setAttribute('id', 'start-button');
 }
@@ -17,7 +20,13 @@ function start() {
 function pause() {
   const pause = document.getElementById('start-button');
 
-  startPomodoroTimer();
+  if (tab === 'pomodoro') {
+    startPomodoroTimer();
+  } else if (tab === 'short') {
+    startShortTimer();
+  } else if (tab === 'long') {
+    startLongTimer();
+  }
   pause.textContent = 'pause';
   pause.setAttribute('id', 'pause-button');
 }
@@ -41,9 +50,13 @@ function changeActiveTab() {
     each_button.addEventListener('click', () => {
       for (let i = 0; i < button.length; i++) {
         button[i].classList.remove('active-button');
-        clearInterval(stopPomodoro);
-        clearInterval(stopShortBreak);
-        clearInterval(stopLongBreak);
+        if (tab === 'pomodoro') {
+          clearInterval(stopPomodoro);
+        } else if (tab === 'short') {
+          clearInterval(stopShortBreak);
+        } else if (tab === 'long') {
+          clearInterval(stopLongBreak);
+        }
       }
 
       each_button.classList.add('active-button');
@@ -59,6 +72,7 @@ function changeToPomodoro() {
   pomodoro_tab.addEventListener('click', () => {
     minutes.textContent = '25';
     seconds.textContent = '00';
+    tab = 'pomodoro';
     start();
   });
 }
@@ -71,6 +85,7 @@ function changeToShortBreak() {
   short_break_tab.addEventListener('click', () => {
     minutes.textContent = '5';
     seconds.textContent = '00';
+    tab = 'short';
     start();
   });
 }
@@ -83,6 +98,7 @@ function changeToLongBreak() {
   long_break_tab.addEventListener('click', () => {
     minutes.textContent = '10';
     seconds.textContent = '00';
+    tab = 'long';
     start();
   });
 }
@@ -95,11 +111,26 @@ function stopPomodoroTimer() {
   clearInterval(stopPomodoro);
 }
 
+function startShortTimer() {
+  stopShortBreak = setInterval(callShortBreak, 1000);
+}
+
+function stopShortTimer() {
+  clearInterval(stopShortBreak);
+}
+
+function startLongTimer() {
+  stopLongBreak = setInterval(callLongBreak, 1000);
+}
+
+function stopLongTimer() {
+  clearInterval(stopLongBreak);
+}
+
 export {
   startButton,
   changeActiveTab,
   changeToPomodoro,
   changeToShortBreak,
   changeToLongBreak,
-  startPomodoroTimer,
 };
