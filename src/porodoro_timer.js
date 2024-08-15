@@ -1,5 +1,7 @@
+import sound from './sound/endsound.mp3';
 let minutes = 24;
 let seconds = 59;
+let endSound = new Audio(sound);
 
 function minutesTimer() {
   const minutes_dom = document.getElementById('minutes');
@@ -18,6 +20,10 @@ function secondTimer() {
 
   if (minutes > -1 && seconds == -1) {
     seconds = 59;
+  }
+
+  if (minutes === -1 && seconds === -1) {
+    endSound.play();
   }
 }
 
