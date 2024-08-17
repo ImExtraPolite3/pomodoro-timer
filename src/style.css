@@ -39,6 +39,10 @@ html {
   margin-bottom: 10px;
 }
 
+/* #reset {
+  width: 30px;
+} */
+
 .active-button {
   background: rgb(90, 92, 94);
 }

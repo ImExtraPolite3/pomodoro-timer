@@ -3,6 +3,7 @@ import {
   changeToLongBreak,
   changeToPomodoro,
   changeToShortBreak,
+  reset,
   startButton,
 } from './site_dom';
 import './style.css';
@@ -12,3 +13,4 @@ changeActiveTab();
 changeToPomodoro();
 changeToShortBreak();
 changeToLongBreak();
+reset();

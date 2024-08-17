@@ -1,38 +1,17 @@
 import sound from './sound/endsound.mp3';
-let minutes = 9;
-let seconds = 59;
 let endSound = new Audio(sound);
 
-function minutesTimer() {
-  const minutes_dom = document.getElementById('minutes');
+function callLongBreak(minutes, seconds) {
+  const timer = document.getElementById('timer');
+  let long_timer = new Date();
 
-  if (minutes > -1) {
-    minutes_dom.textContent = minutes--;
-  }
-}
-
-function secondTimer() {
-  const seconds_dom = document.getElementById('seconds');
-
-  if (seconds > -1) {
-    seconds_dom.textContent = seconds--;
-  }
-
-  if (minutes > -1 && seconds == -1) {
-    seconds = 59;
-  }
-
-  if (minutes === -1 && seconds === -1) {
+  if (timer.textContent !== '00:00') {
+    long_timer.setMinutes(minutes, seconds--);
+    let new_long_timer = long_timer.toTimeString();
+    timer.textContent = new_long_timer.substring(3, 8);
+  } else {
     endSound.play();
   }
-}
-
-function callLongBreak() {
-  if (seconds == 59) {
-    minutesTimer();
-  }
-
-  secondTimer();
 }
 
 export { callLongBreak };

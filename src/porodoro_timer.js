@@ -1,37 +1,19 @@
 import sound from './sound/endsound.mp3';
-let minutes = 24;
-let seconds = 59;
+// let minutes = 24;
+// let seconds = 59;
 let endSound = new Audio(sound);
 
-function minutesTimer() {
-  const minutes_dom = document.getElementById('minutes');
+function callPomodoro(minutes, seconds) {
+  const timer = document.getElementById('timer');
+  let pomodoro = new Date();
 
-  if (minutes > -1) {
-    minutes_dom.textContent = minutes--;
-  }
-}
-
-function secondTimer() {
-  const seconds_dom = document.getElementById('seconds');
-
-  if (seconds > -1) {
-    seconds_dom.textContent = seconds--;
-  }
-
-  if (minutes > -1 && seconds == -1) {
-    seconds = 59;
-  }
-
-  if (minutes === -1 && seconds === -1) {
+  if (timer.textContent !== '00:00') {
+    pomodoro.setMinutes(minutes, seconds--);
+    let new_pomodoro = pomodoro.toTimeString();
+    timer.textContent = new_pomodoro.substring(3, 8);
+  } else {
     endSound.play();
   }
-}
-
-function callPomodoro() {
-  if (seconds == 59) {
-    minutesTimer();
-  }
-  secondTimer();
 }
 
 export { callPomodoro };

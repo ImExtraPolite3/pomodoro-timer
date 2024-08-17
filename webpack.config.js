@@ -19,6 +19,10 @@ module.exports = {
         test: /\.mp3$/i,
         type: 'asset/resource',
       },
+      {
+        test: /\.svg$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   devtool: 'inline-source-map',
