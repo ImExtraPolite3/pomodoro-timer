@@ -11,7 +11,8 @@ html {
 #container,
 #timer-buttons,
 #start-button,
-#pause-button {
+#pause-button,
+#reset-button {
   border-radius: 10px;
   overflow: hidden;
 }
@@ -39,9 +40,9 @@ html {
   margin-bottom: 10px;
 }
 
-/* #reset {
-  width: 30px;
-} */
+#reset-button {
+  padding: 5px 20px;
+}
 
 .active-button {
   background: rgb(90, 92, 94);

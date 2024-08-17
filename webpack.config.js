@@ -7,7 +7,6 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    // assetModuleFilename: 'assets/[hash][ext][query]',
   },
   module: {
     rules: [
@@ -20,7 +19,7 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.svg$/i,
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
         type: 'asset/resource',
       },
     ],
